@@ -239,7 +239,7 @@ class SmartHomeApp:
         edit_win.title(f"Edit {device_type}")
 
         x_position, y_position = self.calc_centre_of_screen()
-        edit_win.geometry(f"330x170+{x_position + self.window_width // 3}+{y_position + self.window_height // 3}")
+        edit_win.geometry(f"330x200+{x_position + self.window_width // 3}+{y_position + self.window_height // 3}")
 
         device_type_to_instruction_dict = {
             "SmartPlug": "Enter Consumption Rate:",
@@ -285,6 +285,7 @@ class SmartHomeApp:
 
             except (ValueError, TypeError, IndexError) as e:
                 error_info_label.config(text=e)
+                edit_win.geometry(f"{len(str(e)) * 8}x200")
 
         save_button = Button(
             edit_win,

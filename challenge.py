@@ -29,7 +29,7 @@ class SmartHomesApp:
             self.main_frame.columnconfigure(i, weight=1)
             self.main_frame.rowconfigure(i, weight=1)
         self.win.grid_columnconfigure(0, weight=1)
-
+        
         self.next_smart_home_id = 1
         self.smart_homes_dict = {}
         self.widgets_list = []
@@ -216,6 +216,8 @@ class SmartHomesApp:
         if not file_name:
             return
         
+        self.smart_homes_dict = {}
+
         file = open(file_name, "r")
         max_id_seen = 0
         new_win = Toplevel()
@@ -257,7 +259,7 @@ class SmartHomesApp:
                 i += 3
             
             self.smart_homes_dict[smart_home_name] = [smart_home_app_object,[]]
-        
+            
         smart_home_app_object.update_parent_win = self.create_widgets
         self.next_smart_home_id = max_id_seen + 1
         self.create_widgets()
